@@ -12,16 +12,16 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@ToString(exclude = { "chosenCategory" })
+@ToString//(exclude = { "chosenCategory" })
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
 public class Configuration extends BaseEntity {
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "category_id", nullable = true)
-	private Category chosenCategory;
+//	@ManyToOne(cascade = CascadeType.ALL)
+//	@JoinColumn(name = "category_id", nullable = true)
+//	private Category chosenCategory;
 	
 	@Column(nullable=false)
 	private String part;
