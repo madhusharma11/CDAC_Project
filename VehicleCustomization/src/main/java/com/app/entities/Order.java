@@ -1,24 +1,21 @@
 package com.app.entities;
 
 import java.time.LocalDate;
-<<<<<<< HEAD
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-=======
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
->>>>>>> 54efb52f21eb5ee405343475e6895fdb61cf3fec
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -35,43 +32,40 @@ import lombok.ToString;
 @Entity
 @Table(name="orders")
 public class Order extends BaseEntity{
+	@Column
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
+	
 
-<<<<<<< HEAD
 	@Column(name="payment_status",nullable = false)
-	private PaymentStatus status ;
+	private PaymentStatus status=PaymentStatus.PENDING ;
 	
 	@Column(name="booking_date",nullable = false)
 	private LocalDate bookingdate ;
 	
-	@Column(name="payment",nullable = false)
-	private double payment ; 
+	@Column(name="totalAmount",nullable = false)
+	private double totalAmount ; 
 	
-	@OneToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-	@JoinColumn(name="address_id",nullable=false)
-	private Address address;
+	@ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+	@JoinColumn(name="user_id",nullable=true)
+	private User user;
 	
-	 @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "order")
-	    private List<Configuration> configurations;
+	@ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+	@JoinColumn(name="category_id",nullable=true)
+	private Category category;
+	
+//	 @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "order")
+//	 private List<Configuration> configurations;
+	
+	@ManyToMany //mandatory o.w --Mapping Exception
+	//to customise the join table
+	@JoinTable(name="order_configuration",
+	joinColumns = @JoinColumn(name="order_id"),
+	inverseJoinColumns = @JoinColumn(name="configuration_id")
+	)
+	private Set<ConfigurationModel> configurationMOodels=new HashSet<>();
  
 }
 
 
-=======
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id ;
-	
-	@Column(nullable = false)
-	private String status ;
-	
-	@Column(name="booking_date")
-	private LocalDate bookingdate ;
-	
-	@Column(nullable = false)
-	private double payment ; 
-	
-	
-	
-	
-}
->>>>>>> 54efb52f21eb5ee405343475e6895fdb61cf3fec

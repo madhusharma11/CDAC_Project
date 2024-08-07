@@ -1,10 +1,5 @@
 package com.app.dto;
 
-import javax.persistence.Column;
-
-import com.app.entities.Address;
-import com.app.entities.Category;
-import com.app.entities.Role;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -17,9 +12,8 @@ import lombok.ToString;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class ConfigurationDTO {
-	private String partName;
-	private Category chosenCategory;
-	
 
+public class LoginDTO {
+	private String password;
+	private String email;
 }

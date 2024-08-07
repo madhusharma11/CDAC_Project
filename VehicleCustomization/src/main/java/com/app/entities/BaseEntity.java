@@ -22,10 +22,7 @@ import lombok.ToString;
 //@ToString
 @MappedSuperclass
 public class BaseEntity {
-	@Column
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
+	
 	
 	
 	@CreationTimestamp

@@ -7,6 +7,9 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -24,6 +27,11 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString(exclude = {"user"})
 public class Address extends BaseEntity {
+	@Column
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
+	
 	@Column(name="adr_line1",length=100)
 	private String adrLine1;
 	@Column(name="adr_line2",length=100)

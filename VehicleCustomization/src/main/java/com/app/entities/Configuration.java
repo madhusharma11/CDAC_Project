@@ -4,6 +4,9 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -14,30 +17,28 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@ToString//(exclude = { "chosenCategory" })
+@ToString(exclude = { "chosenCategory" })
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
 public class Configuration extends BaseEntity {
-//	@ManyToOne(cascade = CascadeType.ALL)
-//	@JoinColumn(name = "category_id", nullable = true)
-//	private Category chosenCategory;
+	@Column
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
 	
-	@Column(nullable=false)
-	private String part;
+	@ManyToOne(cascade = CascadeType.MERGE)
+	@JoinColumn(name = "category_id", nullable = true)
+	private Category chosenCategory;
 	
-	@Column(nullable=false)
-	private String partModel;
+	@Column(nullable=true)
+	private String partName;
 	
-	@Column(nullable=false)
-	private String description;
-	@Column(nullable=false)
-	private double price;
 	
-	   @ManyToOne(fetch = FetchType.LAZY)
-	    @JoinColumn(name = "order_id") // Foreign key column in the configuration table
-	    private Order order;
+//	   @ManyToOne(fetch = FetchType.LAZY)
+//	    @JoinColumn(name = "order_id") // Foreign key column in the configuration table
+//	    private Order order;
 
 }

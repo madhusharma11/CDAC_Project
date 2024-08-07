@@ -1,5 +1,7 @@
 package com.app.service;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,10 +17,15 @@ public class CategoryServiceImpl implements CategoryService{
 private CategoryRepository categoryRepository;
 	
 	@Override
-	public Category addCategory(Category category) {
-		
+	public Category addCategory(Category category) {		
 		Category savedcategory=categoryRepository.save(category);
 		return savedcategory;
+	}
+
+	@Override
+	public List<Category> getAllCategories() {
+		List<Category> categories=categoryRepository.findAll();
+		return categories;
 	}
 
 }
