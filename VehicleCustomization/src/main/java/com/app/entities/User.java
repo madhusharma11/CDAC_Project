@@ -40,6 +40,10 @@ public class User extends BaseEntity{
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
+	protected void onCreate() {
+        if (this.id == null) {
+            this.id = (long) 10;
+        }}
 	
 	@Column(name="first_name")
 	private String firstname;

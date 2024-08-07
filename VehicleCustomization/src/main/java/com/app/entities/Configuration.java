@@ -1,5 +1,8 @@
 package com.app.entities;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,8 +11,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -23,6 +32,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@Table(name="configurations")
 public class Configuration extends BaseEntity {
 	@Column
 	@Id
@@ -37,8 +47,17 @@ public class Configuration extends BaseEntity {
 	private String partName;
 	
 	
+	@ManyToMany //mandatory o.w --Mapping Exception//to customise the join table
+	@Fetch(FetchMode.JOIN)
+	@JoinTable(name="configuration_configurationModles",
+	joinColumns = @JoinColumn(name="configurations_id"),
+	inverseJoinColumns = @JoinColumn(name="configurationModels_id")
+	)
+	private Set<ConfigurationModel> configurationModels=new HashSet<>();
+ 
+	
 //	   @ManyToOne(fetch = FetchType.LAZY)
-//	    @JoinColumn(name = "order_id") // Foreign key column in the configuration table
+//	    @JoinColumn(name = "con_id") // Foreign key column in the configuration table
 //	    private Order order;
 
 }

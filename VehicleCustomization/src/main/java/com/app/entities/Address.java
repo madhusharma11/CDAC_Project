@@ -21,7 +21,7 @@ import lombok.ToString;
 
 
 @Entity
-@Table(name="address")
+@Table(name="addresses")
 
 @AllArgsConstructor
 @NoArgsConstructor

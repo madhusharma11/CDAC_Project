@@ -1,0 +1,82 @@
+
+INSERT INTO users (id,creation_date, updated_on, contact_info, email, first_name, last_name, password, role, address_id)
+VALUES (1,'2024-08-06', '2024-08-06', '555-1234', 'john.doe@example.com', 'John', 'Doe', 'password123', 'CUSTOMER', 100);
+
+
+INSERT INTO users (id,creation_date, updated_on, contact_info, email, first_name, last_name, password, role, address_id)
+VALUES (2,'2024-08-07', '2024-08-07', '555-5678', 'jane.smith@example.com', 'Jane', 'Smith', 'password456', 'CUSTOMER', 101);
+
+
+INSERT INTO users (id,creation_date, updated_on, contact_info, email, first_name, last_name, password, role, address_id)
+VALUES (3,'2024-08-08', '2024-08-08', '555-8765', 'emily.jones@example.com', 'Emily', 'Jones', 'password789', 'CUSTOMER', 102);
+
+
+INSERT INTO users (id,creation_date, updated_on, contact_info, email, first_name, last_name, password, role, address_id)
+VALUES (4,'2024-08-09', '2024-08-09', '555-4321', 'michael.brown@example.com', 'Michael', 'Brown', 'password321', 'CUSTOMER', 103);
+
+
+INSERT INTO users (id,creation_date, updated_on, contact_info, email, first_name, last_name, password, role, address_id)
+VALUES (5,'2024-08-09', '2024-08-09', '555-4321', 'madhu@example.com', 'Madhu', 'Sharma', '123', 'ADMIN', 100);
+
+
+
+-- Insert sample data into the 'addresses' table
+desc addresses;addresses
+
+INSERT INTO addresses (id,creation_date, updated_on, adr_line1, adr_line2, city, country, state, zip_code)
+VALUES (100,'2024-08-06', '2024-08-06', '123 Elm Street', 'Apt 4B', 'Springfield', 'USA', 'Illinois', '62701');
+
+
+INSERT INTO addresses (id,creation_date, updated_on, adr_line1, adr_line2, city, country, state, zip_code)
+VALUES (101,'2024-08-07', '2024-08-07', '456 Oak Avenue', 'Suite 12', 'Shelbyville', 'USA', 'Indiana', '46176');
+
+
+INSERT INTO addresses (id,creation_date, updated_on, adr_line1, adr_line2, city, country, state, zip_code)
+VALUES (102,'2024-08-08', '2024-08-08', '789 Pine Road', '', 'Capital City', 'USA', 'California', '95814');
+
+
+INSERT INTO addresses (id,creation_date, updated_on, adr_line1, adr_line2, city, country, state, zip_code)
+VALUES (103,'2024-08-09', '2024-08-09', '101 Maple Drive', 'Building 5', 'Greenfield', 'USA', 'Ohio', '44101');
+
+
+INSERT INTO addresses (id,creation_date, updated_on, adr_line1, adr_line2, city, country, state, zip_code)
+VALUES (104,'2024-08-10', '2024-08-10', '202 Birch Lane', '', 'Lincoln', 'USA', 'Nebraska', '68508');
+
+
+
+-- Sample data insertion
+INSERT INTO categories (id, creation_date, updated_on, vehicle_type) VALUES
+(1001, '2024-01-10', '2024-01-15', 'SUV'),
+(1002, '2024-02-12', '2024-02-20', 'Sedan'),
+(1003, '2024-03-05', '2024-03-10', 'EV'),
+(1004, '2024-04-22', '2024-04-30', 'Convertible'),
+(1005, '2024-05-11', '2024-05-15', 'Hatchback')
+
+-- Sample data insertion
+INSERT INTO configurations (id, creation_date, updated_on, part_name, category_id) VALUES
+(1, '2024-01-15', '2024-01-20', 'Engine', 1001),
+(2, '2024-02-10', '2024-02-15', 'Transmission', 1001),
+(3, '2024-03-05', '2024-03-10', 'Brakes', 1001),
+(4, '2024-04-22', '2024-04-25', 'Suspension', 1004),
+(5, '2024-05-11', '2024-05-15', 'Steer',1003),
+(6, '2024-01-15', '2024-01-20', 'Engine', 1002),
+(7, '2024-02-10', '2024-02-15', 'Transmission', 1002),
+(8, '2024-03-05', '2024-03-10', 'Brakes', 1002);
+
+
+
+INSERT INTO configuration_models (id, creation_date, updated_on, model_code, model_description, model_price)
+VALUES
+(51, '2024-01-15', '2024-08-01', 'M1234', 'Basic Sedan Model', 19999.99),
+(52, '2024-02-20', '2024-08-01', 'M5678', 'Hatchback Model', 24999.99),
+(53, '2024-03-10', '2024-08-01', 'M9101', 'Luxury SUV Model', 34999.99),
+(54, '2024-04-25', '2024-08-01', 'M1122', 'Electric Sedan Model', 29999.99);
+
+
+
+configurations_id	bigint	NO	PRI		
+configuration_models_id	bigint	NO	PRI		
+
+INSERT INTO configuration_configuration_modles (configurations_id,configuration_models_id)
+VALUES
+(1,51),(1,52),(1,53),(1,54);

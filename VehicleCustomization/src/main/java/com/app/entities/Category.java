@@ -21,7 +21,7 @@ import lombok.ToString;
 import lombok.experimental.Accessors;
 
 @Getter
-@Setter
+
 @ToString(exclude = { "configurations" })
 @NoArgsConstructor
 @AllArgsConstructor
@@ -40,19 +40,20 @@ public class Category extends BaseEntity {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
+	@Setter
 	@Column(name = "vehicle_type")
 	private String name;
 
-	@OneToMany(mappedBy = "chosenCategory", cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
-	private List<Configuration> configurations = new ArrayList<>();
-
-	public void addConfiguration(Configuration configuration) {
-		configurations.add(configuration);
-		configuration.setChosenCategory(this);
-	}
-
-	public void removeConfiguration(Configuration configuration) {
-		configurations.remove(configuration);
-		configuration.setChosenCategory(null);
-	}
+//	@OneToMany(mappedBy = "chosenCategory", cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+//	private List<Configuration> configurations = new ArrayList<>();
+//
+//	public void addConfiguration(Configuration configuration) {
+//		configurations.add(configuration);
+//		configuration.setChosenCategory(this);
+//	}
+//
+//	public void removeConfiguration(Configuration configuration) {
+//		configurations.remove(configuration);
+//		configuration.setChosenCategory(null);
+//	}
 }

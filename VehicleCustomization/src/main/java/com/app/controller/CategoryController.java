@@ -33,6 +33,7 @@ public class CategoryController {
 			System.out.println(categories);
 			return ResponseEntity.ok(categories);
 		} catch (RuntimeException e) {
+			e.printStackTrace();
 			System.out.println(e.getMessage());
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ApiException(e.getMessage()));
 		}

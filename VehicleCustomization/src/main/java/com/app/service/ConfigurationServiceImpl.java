@@ -1,5 +1,7 @@
 package com.app.service;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.modelmapper.ModelMapper;
@@ -7,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.app.dao.ConfigureRepository;
+import com.app.dao.UserRepository;
 import com.app.dto.ConfigurationDTO;
 import com.app.entities.Configuration;
 @Service
@@ -25,6 +28,12 @@ private ModelMapper mapper;
 		Configuration savedconfig= configureRepository.save(configurationEntity);
 		return mapper.map(savedconfig, Configuration.class);
 		
+	}
+
+	@Override
+	public List<Configuration> getConfiguration(Long category_id) {
+		List<Configuration> configurations=configureRepository.findByCategoryId(category_id);
+		return configurations;
 	}
 
 }
