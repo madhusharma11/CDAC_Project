@@ -19,6 +19,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -29,6 +31,7 @@ import lombok.ToString;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+//@ToString(exclude = {"user", "category" ,"configurationMOodels"})
 @ToString
 @Entity
 @Table(name="orders")
@@ -48,10 +51,12 @@ public class Order extends BaseEntity{
 	@Column(name="totalAmount",nullable = false)
 	private double totalAmount ; 
 	
+	//@JsonIgnore
 	@ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
 	@JoinColumn(name="user_id",nullable=true)
 	private User user;
 	
+	//@JsonIgnore
 	@ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
 	@JoinColumn(name="category_id",nullable=true)
 	private Category category;

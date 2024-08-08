@@ -7,5 +7,5 @@ import com.app.entities.Order;
 
 public interface OrderService {
 	
-	List<Order> getAllOrders();
+	//List<Order> getAllOrders();
 }
