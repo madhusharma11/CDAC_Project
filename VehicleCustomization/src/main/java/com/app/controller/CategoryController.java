@@ -23,7 +23,15 @@ public class CategoryController {
 
 	@PostMapping("/add")
 	public ResponseEntity<?> addCategory(@RequestBody Category category) {
-		return ResponseEntity.status(HttpStatus.CREATED).body(categoryService.addCategory(category));
+		try {
+			Category catgory=categoryService.addCategory(category);
+			return ResponseEntity.ok(catgory);
+		}catch(RuntimeException e)
+		{
+			e.printStackTrace();
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ApiException("Not Added!!!"));
+		}
+		//return ResponseEntity.status(HttpStatus.CREATED).body(categoryService.addCategory(category));
 	}
 
 	@GetMapping("/getAllCategory")
@@ -35,7 +43,7 @@ public class CategoryController {
 		} catch (RuntimeException e) {
 			e.printStackTrace();
 			System.out.println(e.getMessage());
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ApiException(e.getMessage()));
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ApiException("Category is not present!!!"));
 		}
 
 	}

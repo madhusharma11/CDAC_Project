@@ -18,6 +18,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -41,8 +43,9 @@ public class Order extends BaseEntity{
 	@Column(name="payment_status",nullable = false)
 	private PaymentStatus status=PaymentStatus.PENDING ;
 	
-	@Column(name="booking_date",nullable = false)
-	private LocalDate bookingdate ;
+	@Column(name="booking_date",nullable = true)
+	@CreationTimestamp
+	private LocalDate bookingdate;
 	
 	@Column(name="totalAmount",nullable = false)
 	private double totalAmount ; 
@@ -64,7 +67,7 @@ public class Order extends BaseEntity{
 	joinColumns = @JoinColumn(name="order_id"),
 	inverseJoinColumns = @JoinColumn(name="configuration_id")
 	)
-	private Set<ConfigurationModel> configurationMOodels=new HashSet<>();
+	private Set<ConfigurationModel> configurationModels=new HashSet<>();
  
 }
 

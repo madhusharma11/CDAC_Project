@@ -12,4 +12,6 @@ public interface UserServiceI {
 	 User authenticateUser(LoginDTO loginDto);
 	 List<User> getAllUsers();
 
+	User getById(Long id);
+
 }

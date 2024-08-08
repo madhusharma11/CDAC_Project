@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.app.dao.CategoryRepository;
 import com.app.entities.Category;
+import com.app.entities.User;
 
 @Service
 @Transactional
@@ -26,6 +27,17 @@ private CategoryRepository categoryRepository;
 	public List<Category> getAllCategories() {
 		List<Category> categories=categoryRepository.findAll();
 		return categories;
+	}
+	
+	
+	// User user=userRepository.findById(id).orElseThrow
+	//(()->new com.app.custom_exception.InvalidCredentialsException("User not registered!!!"));;
+		
+	@Override
+	public Category getByCategoryId(Long categoryId)
+	{
+		Category category=categoryRepository.findById(categoryId).orElseThrow(()->new com.app.custom_exception.InvalidCredentialsException("Invalid Category!!!"));
+		return category;
 	}
 
 }
