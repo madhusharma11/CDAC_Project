@@ -9,7 +9,10 @@ import com.app.entities.User;
 public interface UserServiceI {
 	User addCustomer(CustomerDTO userDto);
 
-	 User authenticateUser(LoginDTO loginDto);
-	 List<User> getAllUsers();
+	User authenticateUser(LoginDTO loginDto);
+	 
+	List<User> getAllUsers();
+	
+	User updateCustomer (Long id ,CustomerDTO userdto) ;
 
 }

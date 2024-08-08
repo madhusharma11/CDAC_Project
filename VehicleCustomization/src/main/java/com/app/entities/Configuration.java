@@ -32,7 +32,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name="configurations")
+//@Table(name="configurations")
 public class Configuration extends BaseEntity {
 	@Column
 	@Id

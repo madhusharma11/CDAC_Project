@@ -12,5 +12,6 @@ public interface ConfigurationService {
 	Configuration addConfiguration(ConfigurationDTO configurationDto);
 
 	List<Configuration> getConfiguration(Long category_id);
+	
 
 }
