@@ -47,7 +47,8 @@ public class UserServiceImpl implements UserServiceI {
 
 	@Override
 	public User getById(Long id) {
-      User user=userRepository.findById(id).orElseThrow(()->new com.app.custom_exception.InvalidCredentialsException("User not registered!!!"));
+      User user=userRepository.findById(id).orElseThrow(
+    		  ()->new com.app.custom_exception.InvalidCredentialsException("User not registered!!!"));
 	return user;
 	}
 
