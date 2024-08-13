@@ -8,9 +8,11 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.app.dao.AddressRepository;
 import com.app.dao.UserRepository;
 import com.app.dto.CustomerDTO;
 import com.app.dto.LoginDTO;
+import com.app.entities.Address;
 import com.app.entities.User;
 
 @Service
@@ -19,6 +21,9 @@ public class UserServiceImpl implements UserServiceI {
 
 	@Autowired
 	private UserRepository userRepository;
+	
+	@Autowired
+	private AddressRepository addressRepository;
 	@Autowired
 	private ModelMapper mapper;
 
@@ -26,6 +31,9 @@ public class UserServiceImpl implements UserServiceI {
 	public User addCustomer(CustomerDTO userDto) {
 		System.out.println(userDto);
 		User userEntity = mapper.map(userDto, User.class);
+		
+		Address address=userEntity.getChosenAddress();
+		addressRepository.save(address);
 		User savedcust = userRepository.save(userEntity);
 		return mapper.map(savedcust, User.class);
 	}

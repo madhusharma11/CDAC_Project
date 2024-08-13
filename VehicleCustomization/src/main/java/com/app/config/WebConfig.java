@@ -23,6 +23,3 @@ public class WebConfig {
     }
 }
 
-max-height: 200px;
-    overflow-y: scroll;
-

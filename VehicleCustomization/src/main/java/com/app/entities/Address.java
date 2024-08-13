@@ -27,6 +27,8 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString(exclude = {"user"})
 public class Address extends BaseEntity {
+	@Getter
+	@Setter
 	@Column
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -45,12 +47,12 @@ public class Address extends BaseEntity {
 	@Column(length=20,name="zip_code")
 	private String zipCode;
 	
-	@OneToMany(mappedBy = "chosenAddress",cascade = CascadeType.ALL ,fetch = FetchType.LAZY )
+	//@OneToMany(mappedBy = "chosenAddress",cascade = CascadeType.ALL ,fetch = FetchType.LAZY )
 	//@JsonIgnore //this field will be ignored during both ser n de-ser.
-	private List<User> users=new ArrayList<>();
+	//private List<User> users=new ArrayList<>();
 	
 	
-
+/*
 	public void addUser(User user)
 	{
 		//add a post ref to the list of posts in category
@@ -61,7 +63,7 @@ public class Address extends BaseEntity {
 	{
 		users.remove(user);
 		user.setChosenAddress(null);
-	}
+	}*/
 	public String getAdrLine1() {
 		return adrLine1;
 	}

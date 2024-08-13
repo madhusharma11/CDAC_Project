@@ -10,7 +10,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.OnDelete;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -58,7 +62,7 @@ public class User extends BaseEntity{
 	@Column(name="email",unique=true)
 	private String email;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "address_id",nullable=true)
 	private Address chosenAddress;
 	
