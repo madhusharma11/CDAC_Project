@@ -1,0 +1,12 @@
+
+
+.category{
+    width: 300px; /* Adjust the width to your preference */
+    height: 40px; /* Adjust the height to make the dropdown taller */
+    font-size: 16px; /* Adjust the font size for better readability */
+}
+
+
+.category option {
+    font-size: 16px; /* Consistent font size in the dropdown list */
+}

@@ -13,4 +13,6 @@ public interface ConfigurationService {
 
 	List<Configuration> getConfiguration(Long category_id);
 
+	Configuration getById(Long config_id);
+
 }

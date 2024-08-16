@@ -12,6 +12,7 @@ import com.app.dao.ConfigureRepository;
 import com.app.dao.UserRepository;
 import com.app.dto.ConfigurationDTO;
 import com.app.entities.Configuration;
+import com.app.entities.User;
 @Service
 @Transactional
 public class ConfigurationServiceImpl implements ConfigurationService{
@@ -34,6 +35,13 @@ private ModelMapper mapper;
 	public List<Configuration> getConfiguration(Long category_id) {
 		List<Configuration> configurations=configureRepository.findByCategoryId(category_id);
 		return configurations;
+	}
+
+	@Override
+	public Configuration getById(Long config_id) {
+		Configuration configuration=configureRepository.findById(config_id).orElseThrow(
+	    		  ()->new com.app.custom_exception.InvalidCredentialsException("Congiguration not found!!!"));
+		return configuration;
 	}
 
 }

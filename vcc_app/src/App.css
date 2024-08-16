@@ -1,0 +1,130 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f5f5f5;
+  color: #333;
+  line-height: 1.6;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style-type: none;
+}
+
+
+
+header h1 {
+  margin: 0;
+  font-size: 2rem;
+  letter-spacing: 2px;
+}
+
+/* Navbar */
+nav {
+  background: #444;
+  padding: 10px 0;
+}
+
+nav ul {
+  display: flex;
+  justify-content: center;
+}
+
+nav ul li {
+  margin: 0 15px;
+}
+
+nav ul li a {
+  color: #fff;
+  padding: 5px 10px;
+  transition: background 0.3s ease;
+  font-size: 1.1rem;
+}
+
+nav ul li a:hover {
+  background: #ff6f00;
+  border-radius: 4px;
+}
+
+/* Page Content */
+.content {
+  padding: 5px;
+  min-height: 70vh;
+  max-height: 200px;
+  overflow-y: scroll;
+  
+}
+
+
+footer {
+  background: #c02d2d;
+  color: #fff;
+  text-align: center;
+  padding: 10px 0;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  height: 30px;
+  font-family: 'Verdana', sans-serif;
+  text-align: center;
+  background-color: #00e636;
+}
+
+
+
+/* Page Specific Styles */
+h2 {
+  font-size: 2rem;
+  text-align: center;
+  margin: 20px 0;
+}
+
+.page {
+  background: #fff;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Additional Vehicle Customization Theme Styles */
+body {
+  background-color: #1e1e1e;
+  color: #ccc;
+  font-family: 'Verdana', sans-serif;
+}
+
+
+
+nav ul li a {
+  font-family: 'Verdana', sans-serif;
+}
+
+
+
+/* Buttons */
+button {
+  background-color: #ff6f00;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #00e636;
+}

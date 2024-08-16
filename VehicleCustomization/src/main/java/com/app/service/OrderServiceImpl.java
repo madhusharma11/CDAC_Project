@@ -61,4 +61,15 @@ public class OrderServiceImpl implements OrderService {
 		return order;
 	}
 
+	@Override
+	public Order updatePaymentStatusById(Long order_id) {
+
+		//Order order=orderRepository.findById(order_id).orElseThrow(
+//				()->new com.app.custom_exception.InvalidCredentialsException("Payment Status is not Changed!!!"));
+		Order order=orderRepository.findById(order_id).orElseThrow();	
+		order.setStatus(PaymentStatus.DONE);
+		orderRepository.save(order);
+		return order;
+	}
+
 }

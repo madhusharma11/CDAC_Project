@@ -17,6 +17,8 @@ import com.app.dto.ApiResponse;
 import com.app.dto.ConfigurationDTO;
 import com.app.entities.Category;
 import com.app.entities.Configuration;
+import com.app.entities.ConfigurationModel;
+import com.app.service.ConfigurationModelService;
 import com.app.service.ConfigurationService;
 
 @RestController
@@ -24,7 +26,7 @@ import com.app.service.ConfigurationService;
 public class ConfigurationController {
 	@Autowired
 	private ConfigurationService configurationService;
-
+@Autowired private ConfigurationModelService configurationModelService;
 	@PostMapping("/add")
 	public ResponseEntity<?> addConfiguration(@RequestBody ConfigurationDTO configurationDto) {
 		System.out.println("in configuration controller" + configurationDto);
@@ -51,5 +53,34 @@ public class ConfigurationController {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ApiResponse(e.getMessage()));
 		}
 	}
+	
+
+	@GetMapping("/findByConfigModelId/{configModel_id}")
+	public ResponseEntity<?> getConfigurationModelByCategoryId(@PathVariable("configModel_id") Long configModel_id) {
+		try {
+			System.out.println();
+			ConfigurationModel configurationmodel = configurationModelService.getById(configModel_id);
+			return ResponseEntity.ok(configurationmodel);
+
+		} catch (RuntimeException e) {
+			System.out.println(e.getLocalizedMessage());
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ApiResponse(e.getMessage()));
+		}
+	}
+
+	
+	@GetMapping("/findByConfigId/{config_id}")
+	public ResponseEntity<?> getConfigurationById(@PathVariable("config_id") Long config_id) {
+		try {
+			System.out.println();
+			Configuration configuration = configurationService.getById(config_id);
+			return ResponseEntity.ok(configuration);
+
+		} catch (RuntimeException e) {
+			System.out.println(e.getLocalizedMessage());
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ApiResponse(e.getMessage()));
+		}
+	}
+
 
 }

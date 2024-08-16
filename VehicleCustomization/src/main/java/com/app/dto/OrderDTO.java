@@ -16,5 +16,5 @@ public class OrderDTO {
 private Long categoryId;
 private Set<Long> configurationModelId;
 private Long userId;
-private double totalAmount;
+//private double totalAmount;
 }

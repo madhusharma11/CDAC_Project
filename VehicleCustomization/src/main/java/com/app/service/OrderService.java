@@ -7,4 +7,6 @@ public interface OrderService {
 
 	Order addOrder(OrderDTO orderDto);
 
+	Order updatePaymentStatusById(Long order_id);
+
 }

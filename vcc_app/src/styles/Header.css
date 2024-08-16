@@ -1,0 +1,81 @@
+/* Header.css */
+.header {
+    align-items: center; /* Aligns logo and heading to the left */
+    padding: 10px 10px;
+    background-color:blue; /* Example background color */
+    color: #fff;
+    height: 8%;
+    top: 0;
+  }
+  /* Header */
+
+  .header-content {
+    display: flex;
+    align-items: center; /* Aligns logo and heading horizontally */
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .logo {
+    width: 60px; /* Adjust the size as needed */
+    height: auto;
+    margin-right: 10px; /* Space between the logo and heading */
+  }
+  
+  .site-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0;
+  }
+  
+  .navbar-container {
+    width: 100%;
+    display: flex;
+    justify-content: center; /* Center the navbar */
+    margin-top: 10px; /* Space between heading and navbar */
+  }
+  
+  /* Example styles for your navbar */
+  .navbar {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .navbar li {
+    margin: 0px 1px;
+  }
+  
+  .navbar a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+  }
+
+  /* Search container styles */
+/* .search-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .search-input {
+    padding: 5px 10px;
+    font-size: 10px;
+    border: none;
+    border-radius: 4px; 
+    margin-right: 5px;
+  }
+   */
+  .search-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .search-icon {
+    width: 24px; /* Adjust the size as needed */
+    height: auto;
+  }
+  
+  

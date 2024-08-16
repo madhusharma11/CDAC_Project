@@ -50,18 +50,18 @@ public class Order extends BaseEntity{
 	@Column(name="totalAmount",nullable = false)
 	private double totalAmount ; 
 	
-	@ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+	@ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
 	@JoinColumn(name="user_id",nullable=true)
 	private User user;
 	
-	@ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+	@ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
 	@JoinColumn(name="category_id",nullable=true)
 	private Category category;
 	
 //	 @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "order")
 //	 private List<Configuration> configurations;
 	
-	@ManyToMany //mandatory o.w --Mapping Exception
+	@ManyToMany(fetch = FetchType.EAGER) //mandatory o.w --Mapping Exception
 	//to customise the join table
 	@JoinTable(name="order_configuration",
 	joinColumns = @JoinColumn(name="order_id"),
