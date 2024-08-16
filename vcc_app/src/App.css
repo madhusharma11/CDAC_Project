@@ -60,25 +60,29 @@ nav ul li a:hover {
 /* Page Content */
 .content {
   padding: 5px;
-  min-height: 70vh;
-  max-height: 200px;
+  min-height: 12cm;
+  max-height: 300px;
   overflow-y: scroll;
   
 }
 
 
 footer {
-  background: #c02d2d;
+ /* background: #c02d2d;
   color: #fff;
   text-align: center;
-  padding: 10px 0;
+  padding: 2px;
   position: relative;
-  bottom: 0;
   width: 100%;
-  height: 30px;
-  font-family: 'Verdana', sans-serif;
+  height: 40px; 
   text-align: center;
-  background-color: #00e636;
+  background-color:black;
+  padding: 1rem;*/
+  background: #1d1d1e;
+  color: #ffffff;
+  padding: 1rem;
+  height: 40px;
+  padding: 0.5rem 1rem;  
 }
 
 

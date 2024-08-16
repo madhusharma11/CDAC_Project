@@ -1,14 +1,15 @@
 /* Header.css */
 .header {
+    display: flex;
+    flex-direction: column;
     align-items: center; /* Aligns logo and heading to the left */
     padding: 10px 10px;
-    background-color:blue; /* Example background color */
+    background-color: #333; /* Example background color */
     color: #fff;
-    height: 8%;
-    top: 0;
-  }
-  /* Header */
+    
 
+  }
+  
   .header-content {
     display: flex;
     align-items: center; /* Aligns logo and heading horizontally */
@@ -32,7 +33,7 @@
     width: 100%;
     display: flex;
     justify-content: center; /* Center the navbar */
-    margin-top: 10px; /* Space between heading and navbar */
+    margin-top: 5px; /* Space between heading and navbar */
   }
   
   /* Example styles for your navbar */
