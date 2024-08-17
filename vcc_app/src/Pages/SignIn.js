@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import '../styles/SignUp.css';
+import '../styles/background.css';
+
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 import * as utils from './Util.js'; 
 
@@ -28,6 +30,7 @@ function SignIn() {
       setReqMsg('User successfully login');
       utils.setSession(response.data);
       navigate("/category");
+      window.location.reload();
 
     } catch (error) {
       console.error('login failed:', error);

@@ -1,0 +1,20 @@
+
+.ordertable{
+    background-color:white;
+    color: black;
+    width: 100%;
+    text-align: left;
+    opacity:0.9 ;
+}
+.headerth{
+    border-top: 3px solid #b8bdc4;
+}
+
+
+.divbackground{ 
+    background-image: url('../Images/backcar2.jpg'); /* Path to your image */
+    background-size: cover; /* Cover the entire div area */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+}
+

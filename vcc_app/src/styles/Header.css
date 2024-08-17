@@ -3,10 +3,9 @@
     display: flex;
     flex-direction: column;
     align-items: center; /* Aligns logo and heading to the left */
-    padding: 10px 10px;
     background-color: #333; /* Example background color */
     color: #fff;
-    
+    height: 10%;
 
   }
   
@@ -32,9 +31,11 @@
   .navbar-container {
     width: 100%;
     display: flex;
-    justify-content: center; /* Center the navbar */
-    margin-top: 5px; /* Space between heading and navbar */
-  }
+    justify-content: center;
+    margin-top: 5px;
+    height: 35px;
+   
+}
   
   /* Example styles for your navbar */
   .navbar {

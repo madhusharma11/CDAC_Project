@@ -1,67 +1,78 @@
 
 .signup-page {
-    max-width: 500px;
-    margin: 0 auto;
-    background: #333;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  }
-  
-  .signup-page h3 {
-    color: #ff6f00;
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  .signup-form {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .form-group {
-    margin-bottom: 15px;
-  }
-  
-  .form-group label {
-    margin-bottom: 5px;
-    font-size: 1rem;
-    color: #ccc;
-  }
-  
-  .form-group input {
-    width: 100%;
-    padding: 10px;
-    font-size: 1rem;
-    border: 1px solid #444;
-    border-radius: 5px;
-    background-color: #222;
-    color: #fff;
-  }
-  
-  .form-group input:focus {
-    outline: none;
-    border-color: #ff6f00;
-  }
-  
-  .form-group h4 {
-    color: #ff6f00;
-    margin-bottom: 10px;
-  }
-  
-  button {
-    padding: 10px 15px;
-    background-color: #ff6f00;
-    color: #fff;
-    font-size: 1rem;
-    font-family: 'Verdana', sans-serif;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  button:hover {
-    background-color: #e65c00;
-  }
-  
+  max-width: 500px;
+  margin: 0 auto;
+  background: #333;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.signup-page h3 {
+  color: #ff6f00;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.signup-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  margin-bottom: 5px;
+  font-size: 1rem;
+  color: #ccc;
+}
+
+.form-group .required {
+  color: red;
+  margin-left: 5px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #444;
+  border-radius: 5px;
+  background-color: #222;
+  color: #fff;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #ff6f00;
+}
+
+.form-group h4 {
+  color: #ff6f00;
+  margin-bottom: 10px;
+}
+
+button {
+  padding: 10px 15px;
+  background-color: #ff6f00;
+  color: #fff;
+  font-size: 1rem;
+  font-family: 'Verdana', sans-serif;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #e65c00;
+}
+
+.error {
+  color: red;
+  font-size: 12px; /* Smaller font size */
+  margin-top: 5px; /* Small space above the error message */
+  display: block; /* Ensures the error is displayed on a new line */
+}

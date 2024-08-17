@@ -3,8 +3,20 @@ import { json, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import axios from "axios";
 import * as utils from "./Util.js";
+import { Link } from "react-router-dom";
+import "../styles/Orders.css";
+import { useNavigate } from "react-router-dom";
 
 export default function OrderDetails() {
+
+   var user = utils.getUserInfo();
+ /* const navigate=useNavigate();
+
+  if(!user)
+    {
+      navigate("./");
+    }
+*/
   const location = useLocation();
   const { state } = location;
   const { configurationModels, categoryId, configuration } = state || {};
@@ -13,9 +25,9 @@ export default function OrderDetails() {
   const [orderSubmitted, setOrderStatus] = useState(false);
   const [paymentDone, setPaymentStatus] = useState(false);
   const [order, setOrder] = useState({});
-
+const[total,setPrice]=useState(0);
   var orderData = {};
-  var user = utils.getUserInfo();
+  
   var usrJson = JSON.parse(user);
   var confiModelIds = [];
   var totalPrice = 0;
@@ -25,6 +37,7 @@ export default function OrderDetails() {
     confiModelIds.push(configurationModels[key].id);
   });
 
+  
   
   const doPayment = async (e) => {
     e.preventDefault();
@@ -75,6 +88,8 @@ export default function OrderDetails() {
         );
         console.log("Category id loading successfully:", response.data);
         setCategory(response.data.name);
+        setPrice(response.data.price+totalPrice);
+        //alert("totalPrice"+totalPrice);
       } catch (error) {
         console.error("loading failed:", error);
       }
@@ -85,43 +100,57 @@ export default function OrderDetails() {
 
   return (
     <div>
-      <h1>OrderDetails</h1>
-      <table>
+      <h1 style={{color:'white'}}>OrderDetails</h1>
+      <table className="ordertable">
+       
         <tr>
-          <td>Category:</td>
-          <td colSpan="3">{category}</td>
+          <td><b>Category:</b></td>
+          <td colSpan="1">{category}</td><br></br>
         </tr>
-        //loop
+        <tr className="ordertr">
+        
+          <th className="headerth" >Configuration Name</th>
+          <th className="headerth">Model No.</th>
+          <th className="headerth">Model Description</th>
+          <th className="headerth">Model Price</th>
+        
+        </tr>
         {Object.keys(configurationModels).map((key) => (
           <tr key={key}>
-            <td style={{ width: "150px" }}>{configuration[key]} </td>
-            <td style={{ width: "150px" }}>
+            <td  style={{ width: "200px"}}>{configuration[key]} </td>
+            <td  style={{ width: "200px" }}>
               {configurationModels[key].modelCode}{" "}
             </td>
-            <td style={{ width: "150px" }}>
+            <td  style={{ width: "200px" }}>
               {configurationModels[key].modelDescription}{" "}
             </td>
-            <td style={{ width: "150px" }}>
+            <td  style={{ width: "200px" }}>
               {configurationModels[key].modelPrice}{" "}
             </td>
           </tr>
         ))}
+     
         <tr>
-          <td colSpan="3" style={{ width: "150px" }}>
-            total amount:
+          <td className="ordertd" colSpan="1" style={{ width: "200px" }}>
+           <b>Total amount:</b> 
           </td>
-          <td>{totalPrice.toFixed(3)}</td>
+          
+          <td><b>{total.toFixed(3)} (including GST**)</b></td>
         </tr>
         {orderSubmitted?
         <tr>
-          <td colSpan="3" style={{ width: "150px" }}>
+          <td>
             Payment Status
           </td>
-          <td>{order.status}</td>
+          {paymentDone?
+          <td style={{color:'green'}}>{order.status}</td>:<td style={{color:'red'}}>{order.status}</td>}
+          <td></td>
+          <td></td>
         </tr>:""
         }
+      
         <tr>
-          <td colSpan="4">Customer Details:</td>
+          <td className="headerth" colSpan="4"><b>Customer Details:</b></td>
         </tr>
         <tr>
           <td>
@@ -132,22 +161,28 @@ export default function OrderDetails() {
             {usrJson.chosenAddress.adrLine1},{usrJson.chosenAddress.adrLine2}
             {usrJson.chosenAddress.city},{usrJson.chosenAddress.state},
             {usrJson.chosenAddress.country},{usrJson.chosenAddress.zipCode}
-          </td>
+          </td> 
         </tr>
+        
         <tr>
           <td>Mob.no</td>
           <td colSpan="3">{usrJson.contact}</td>
         </tr>
       </table> 
 
-{ orderSubmitted ?paymentDone?<span>Order Successfull </span>:<button id="payment" name="payment" onClick={doPayment}>
+{ orderSubmitted ?paymentDone?<span style={{color:'green'}}>Order Successfull 
+</span>:<button id="payment" name="payment" onClick={doPayment}>
         Pay Now
       </button>
-  :
+  :<span>
         <button id="submitOrder" name="submitOrder" onClick={submitOrder}>
         Confirm
-      </button>
+      </button> 
+      &nbsp;  &nbsp;  &nbsp; 
+      <button ><Link to="/category">Edit</Link></button>
+      </span>  
 }
+
     </div>
   );
 }

@@ -1,6 +1,6 @@
 /* Home.css */
 .home-page {
-    padding: 20px;
+    padding: 0px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -11,16 +11,31 @@
   
   .carousel .slide img {
     width: 100%;
-    height: 10%;
-    max-height: 300px;
-    object-fit: cover;
+    height: 100%;
+    max-height: 450px;
+    object-fit:fill;
   }
   
   .carousel .legend {
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: white;
     color: white;
     padding: 10px;
     font-size: 16px;
     text-align: center;
   }
   
+  .homeBTN{
+    /*position: absolute;
+    left: 20px;
+    right: 20px;
+    z-index: 10;
+*/
+    
+      position: absolute;
+      top: 80%;
+      left: 10%;
+      transform: translate(-50%, -50%); /* Adjust for the exact center */
+      padding: 20px;
+      border-radius: 5px; /* Optional: Rounded corners */
+      opacity: 0.8;
+  }

@@ -1,0 +1,6 @@
+.divbackground{ 
+    background-image: url('../Images/backcar2.jpg'); /* Path to your image */
+    background-size: cover; /* Cover the entire div area */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+}

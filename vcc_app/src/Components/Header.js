@@ -3,6 +3,9 @@ import '../styles/Header.css'; // Ensure you have a CSS file for styling
 import Navbar from './Navbar';
 import logo from '../Images/logo.png'; // Import the logo image
 import searchIcon from '../Images/searchlogo.png';
+import * as utils from '../Pages/Util.js';
+import { useNavigate } from 'react-router-dom';
+
 
 /*
 function Header() {
@@ -17,6 +20,12 @@ function Header() {
 
 
 export default function Header() {
+ /* const navigate=useNavigate();
+  var user = utils.getUserInfo();
+  if(!user)
+  {
+    navigate("./");
+  }*/
   return (
     <header className="header">
       <div className="header-content">
@@ -30,9 +39,7 @@ export default function Header() {
       
       <div className="navbar-container">
           <Navbar />
-          <button className="search-button">
-            <img src={searchIcon} alt="Search" className="search-icon" />
-          </button>
+         
           {/* <div className="search-container">
           <input type="text" placeholder="Search" className="search-input" /> 
         </div> */}

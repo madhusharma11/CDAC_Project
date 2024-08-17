@@ -3,10 +3,19 @@ import { useEffect } from "react";
 import axios from "axios";
 import "../styles/Category.css";
 import { useNavigate } from "react-router-dom";
+import "../Images/video1.mp4";
+import * as utils from "./Util.js";
 
 
 export default function Category() {
   const navigate=useNavigate();
+ /* var user = utils.getUserInfo();
+ 
+  if(!user)
+    {
+      navigate("./");
+    }*/
+
     const[categories,setCategories]=useState([]);
     const[configurationModels,setConfigurationModels]=useState([]);
     const[formData,setFormData]=useState({});
@@ -97,6 +106,12 @@ console.log(formData);
    
     return(
         <div className="signup-page page">
+         {/* <div>
+          <video controls>
+        <source src="video1.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+          </div>*/}
         <h3>Choose Category !! </h3>
         <form onSubmit={handleSubmit} className="signup-form">
           
