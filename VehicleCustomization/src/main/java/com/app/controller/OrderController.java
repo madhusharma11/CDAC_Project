@@ -1,5 +1,7 @@
 package com.app.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +19,7 @@ import com.app.dto.OrderDTO;
 import com.app.entities.Category;
 import com.app.entities.Order;
 import com.app.service.OrderService;
+
 
 @RestController
 @RequestMapping("/orders")
@@ -46,6 +49,20 @@ public class OrderController {
 			System.out.println();
 			Order order = orderService.updatePaymentStatusById(order_id);
 			return ResponseEntity.ok(order);
+
+		} catch (RuntimeException e) {
+			e.printStackTrace();
+			System.out.println(e.getLocalizedMessage());
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ApiResponse(e.getMessage()));
+		}
+	}
+	
+	@GetMapping("/orderByUserId/{user_id}")
+	public ResponseEntity<?> orderById(@PathVariable("user_id") Long user_id) {
+		try {
+			System.out.println();
+			List<Order> orders = orderService.orderByUserId(user_id);
+			return ResponseEntity.ok(orders);
 
 		} catch (RuntimeException e) {
 			e.printStackTrace();

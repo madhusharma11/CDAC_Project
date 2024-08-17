@@ -1,5 +1,7 @@
 package com.app.service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 import javax.transaction.Transactional;
@@ -9,11 +11,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.app.dao.OrderRepository;
+import com.app.dao.UserRepository;
 import com.app.dto.OrderDTO;
 import com.app.entities.Category;
 import com.app.entities.ConfigurationModel;
 import com.app.entities.Order;
 import com.app.entities.PaymentStatus;
+import com.app.entities.Role;
 import com.app.entities.User;
 
 @Service
@@ -54,7 +58,7 @@ public class OrderServiceImpl implements OrderService {
 			amount = amount + configurationModel.getModelPrice();
 			order.getConfigurationModels().add(configurationModel);
 		}
-		order.setTotalAmount(amount);
+		order.setTotalAmount(amount+category.getPrice());
 		order.setStatus(PaymentStatus.PENDING);
 		orderRepository.save(order);
 
@@ -65,11 +69,28 @@ public class OrderServiceImpl implements OrderService {
 	public Order updatePaymentStatusById(Long order_id) {
 
 		//Order order=orderRepository.findById(order_id).orElseThrow(
-//				()->new com.app.custom_exception.InvalidCredentialsException("Payment Status is not Changed!!!"));
+		//()->new com.app.custom_exception.InvalidCredentialsException("Payment Status is not Changed!!!"));
 		Order order=orderRepository.findById(order_id).orElseThrow();	
 		order.setStatus(PaymentStatus.DONE);
 		orderRepository.save(order);
 		return order;
+	}
+
+	@Override
+	public List<Order> orderByUserId(Long user_id) {
+		User user=userservice.getById(user_id);
+		Role role=user.getRole();
+		List<Order> orders=new ArrayList<Order>();
+		if(role==Role.ADMIN)
+		{
+			 return orders=orderRepository.findAll();
+		}
+		else if(role==Role.CUSTOMER)
+		{
+			return orderRepository.findByUserId(user_id);	
+		}
+		return orders;
+	
 	}
 
 }
